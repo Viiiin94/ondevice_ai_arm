@@ -60,7 +60,6 @@ void ledFlower(uint8_t num)
       ledOn(8 - i - 1);
       HAL_Delay(300);
     }
-
   for(uint8_t i = 4; i < num; i++)
     {
       ledOff(i);
@@ -68,4 +67,12 @@ void ledFlower(uint8_t num)
       HAL_Delay(300);
     }
 
+}
+
+void ledShift(uint8_t index)
+{
+  for(uint8_t i = 0; i < 8; i++)
+    {
+      HAL_GPIO_WritePin(led[i].port, led[i].pinNumber, (i == index) ? led[i].onState : led[i].offState);
+    }
 }
